@@ -3,40 +3,50 @@
 namespace App\Controller;
 
 
-use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PagesController
+class PagesController extends AbstractController
 {
     /**
-     * je créé une route avec dans l'url une "wildcard"
-     * pour simplifier l'url
+     * Je créé la route de ma page d'accueil en application le principe du rooting
+     * de Symfony avec un nom unique
      *
-     * @Route("/article/{id}", name="article_display")
+     * @Route("/home", name="homepage")
      *
-     * je mets en parametre de la méthode une variable $id de la wildcard
-     * pour récupère ma valeur de la wildcard dans la variable
      */
-    public function articleDisplay($id)
+
+    // Je créé une méthode home pour retourner une redirection sous forme de réponse du protocole HTTP
+    public function home()
     {
+       return new Response("Page d'accueil");
+    }
 
-        // Je créé un tableau dans une variable $articles pour pouvoir les récupérer quand
-        // je souhaite afficher un de ces articles
-        $articles = [
-            1 => 'Article 1',
-            2 => "Article 2",
-            3 => "Article 3",
-            4 => 'Article 4',
-            5 => "Article 5",
-            6 => "Article 6",
-        ];
+    /**
+     * Je créé la route de ma page formulaire
+     *
+     * @Route("/form", name="formpage")
+     */
 
-        // je créé une réponse de mon serveur Apache du Protocole HTTP
-        // avec l'article que j'ai indiqué dans mon url à l'aide du paramètre id
-        $response = new Response('<h1>'.$articles[$id].'</h1>');
+    // Je créé une méthode form pour afficher un message de confirmation d'envoi de formulaire
+    // Sinon j'effectue une redirection sur ma page d'accueil
 
-        // je retourne ma réponse sur le navigateur
-        return $response;
+    public function formPage()
+    {
+        // J'indique que mon formulaire a été remplie sous forme de booléen
+        $isFormSubmitted = true;
+
+        // Si le formulaire n'est pas remplie je lui indique qu'il faut le remplir
+        // sinon je le redirige sur la page d'accueil du site
+
+        if (!$isFormSubmitted) {
+            // Je retourne une réponse HTTP pour afficher un message à l'utilisateur
+            return new Response("Merci de remplir le formulaire");
+        } else {
+            // Je retourne une réponse HTTP pour afficher un message à l'utilisateur
+            return $this->redirectToRoute('homepage');
+        }
     }
 }
