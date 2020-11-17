@@ -10,13 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class PagesController
 {
     /**
+     * je créé une route avec dans l'url une "wildcard"
+     * pour simplifier l'url
+     *
      * @Route("/article/{id}", name="article_display")
+     *
+     * je mets en parametre de la méthode une variable $id de la wildcard
+     * pour récupère ma valeur de la wildcard dans la variable
      */
     public function articleDisplay($id)
     {
 
         // Je créé un tableau dans une variable $articles pour pouvoir les récupérer quand
-        // je souhaite récupérer un de ces articles
+        // je souhaite afficher un de ces articles
         $articles = [
             1 => 'Article 1',
             2 => "Article 2",
