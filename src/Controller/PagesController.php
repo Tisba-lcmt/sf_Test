@@ -10,16 +10,10 @@ use Symfony\Component\Routing\Annotation\Route;
 class PagesController
 {
     /**
-     * @Route("/article", name="article_display")
-     *
-     * Dans les paramètres de ma méthod articleDisplay je place la classe Request
-     * propre à Symfony en mode autowire qui va instancier cette classe
-     * dans une variable $request
+     * @Route("/article/{id}", name="article_display")
      */
-    public function articleDisplay(Request $request)
+    public function articleDisplay($id)
     {
-        // j"utilise la classe Request pour récupérer l'id de mon url en méthode get
-        $monArticle = $request->query->get('id');
 
         // Je créé un tableau dans une variable $articles pour pouvoir les récupérer quand
         // je souhaite récupérer un de ces articles
@@ -34,7 +28,7 @@ class PagesController
 
         // je créé une réponse de mon serveur Apache du Protocole HTTP
         // avec l'article que j'ai indiqué dans mon url à l'aide du paramètre id
-        $response = new Response('<h1>'.$articles[$monArticle].'</h1>');
+        $response = new Response('<h1>'.$articles[$id].'</h1>');
 
         // je retourne ma réponse sur le navigateur
         return $response;
