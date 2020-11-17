@@ -5,48 +5,36 @@ namespace App\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PagesController extends AbstractController
 {
     /**
-     * Je créé la route de ma page d'accueil en application le principe du rooting
-     * de Symfony avec un nom unique
+     * je créé une route avec dans l'url une "wildcard"
+     * pour simplifier l'url
      *
-     * @Route("/home", name="homepage")
+     * @Route("/article/{id}", name="article_display")
      *
+     * je mets en parametre de la méthode une variable $id de la wildcard
+     * pour récupère ma valeur de la wildcard dans la variable
      */
-
-    // Je créé une méthode home pour retourner une redirection sous forme de réponse du protocole HTTP
-    public function home()
+    public function articleDisplay()
     {
-       return new Response("Page d'accueil");
-    }
 
-    /**
-     * Je créé la route de ma page formulaire
-     *
-     * @Route("/form", name="formpage")
-     */
+        // Je créé un tableau dans une variable $articles pour pouvoir les récupérer quand
+        // je souhaite afficher un de ces articles
+        $articles = [
+            1 => 'Article 1',
+            2 => "Article 2",
+            3 => "Article 3",
+            4 => 'Article 4',
+            5 => "Article 5",
+            6 => "Article 6",
+        ];
 
-    // Je créé une méthode form pour afficher un message de confirmation d'envoi de formulaire
-    // Sinon j'effectue une redirection sur ma page d'accueil
-
-    public function formPage()
-    {
-        // J'indique que mon formulaire a été remplie sous forme de booléen
-        $isFormSubmitted = true;
-
-        // Si le formulaire n'est pas remplie je lui indique qu'il faut le remplir
-        // sinon je le redirige sur la page d'accueil du site
-
-        if (!$isFormSubmitted) {
-            // Je retourne une réponse HTTP pour afficher un message à l'utilisateur
-            return new Response("Merci de remplir le formulaire");
-        } else {
-            // Je retourne une réponse HTTP pour afficher un message à l'utilisateur
-            return $this->redirectToRoute('homepage');
-        }
+        // j'utilise la méthode render propre à la classe AbstractController
+        // qui va chercher mon fichier .html.twig (dans le dossier templates)
+        // puis le traduire en HTML et le renvoyer en tant que réponse du Protocole HTTP
+        return $this->render('article.html.twig');
     }
 }
