@@ -18,6 +18,7 @@ class PagesController extends AbstractController
      * je mets en parametre de la méthode une variable $id de la wildcard
      * pour récupère ma valeur de la wildcard dans la variable
      */
+
     public function articleDisplay($id)
     {
 
@@ -54,6 +55,7 @@ class PagesController extends AbstractController
      * @Route("/profile", name="profile_show")
      *
      */
+
     public function profileShow()
     {
         // Je créé un tableau dans une variable $profile pour pouvoir récupèrer les informations
@@ -78,6 +80,26 @@ class PagesController extends AbstractController
         // je ne peux pas les appeler car c'est un fichier séparé
         return $this->render('article.html.twig', [
             'profile' => $profile
+        ]);
+    }
+
+    /**
+     * @Route("/skills", name="profilskills")
+     */
+    public function profilSkills()
+    {
+        // Je créé un tableau dans une variable $skills
+
+        $skills = ["html/css", "javascript", "sql", "php", "symfony"];
+
+        // j'utilise la méthode render propre à la classe AbstractController
+        // qui va chercher mon fichier .html.twig (dans le dossier templates)
+        // puis le traduire en HTML et le renvoyer en tant que réponse du Protocole HTTP
+
+        // je passe en second paramètre de la méthode render le tableau que je souhaite
+        // utiliser dans twig pour retourner mon twig en html
+        return $this->render('skills.html.twig', [
+            'skills' => $skills
         ]);
     }
 }
