@@ -18,7 +18,7 @@ class PagesController extends AbstractController
      * je mets en parametre de la méthode une variable $id de la wildcard
      * pour récupère ma valeur de la wildcard dans la variable
      */
-    public function articleDisplay()
+    public function articleDisplay($id)
     {
 
         // Je créé un tableau dans une variable $articles pour pouvoir les récupérer quand
@@ -32,9 +32,19 @@ class PagesController extends AbstractController
             6 => "Article 6",
         ];
 
+        // Je récupère mon article dans le tableauà l'aide du paramètre
+        // id indiqué dans l'url
+        $article =  $articles[$id];
+
         // j'utilise la méthode render propre à la classe AbstractController
         // qui va chercher mon fichier .html.twig (dans le dossier templates)
         // puis le traduire en HTML et le renvoyer en tant que réponse du Protocole HTTP
-        return $this->render('article.html.twig');
+
+
+        // En second paramètre, je créé un tableau pour introduire mes variables twig écrites
+        // dans mon fichier twig et les lier à mes variables PHP dans le Controller
+        return $this->render('article.html.twig', [
+            'article' => $article
+            ]);
     }
 }
