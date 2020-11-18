@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Agent</title>
+</head>
+<body>
+
+
+
+    {# Dans une boucle for je créé une variable temporaire qui va récupérer à chaque tour
+        de boucle les valeurs de mon tableau agents et l'afficher dans un li#}
+    {% for agent in agents %}
+
+        {# Dans ma boucle if, je vérifie si la valeur de published est vraie #}
+        {% if agent.published %}
+
+        <p><strong>Firstname : </strong>{{ agent.firstName }}</p>
+        <p><strong>Lastname : </strong>{{ agent.lastName }} </p>
+        <p><strong>Age : </strong>{{ agent.age }}</p>
+        <hr>
+        {% endif %}
+
+    {% endfor %}
+
+
+</body>
+</html>
