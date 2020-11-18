@@ -43,8 +43,8 @@ class PagesController extends AbstractController
 
         // En second paramètre, je créé un tableau pour introduire mes variables twig écrites
         // dans mon fichier twig et les lier à mes variables PHP dans le Controller
-        return $this->render('article.html.twig', [
+        return $this->render('twigshow.html.twig', [
             'article' => $article
-            ]);
+        ]);
     }
 }
