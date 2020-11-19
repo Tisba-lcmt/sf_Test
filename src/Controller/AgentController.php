@@ -67,7 +67,7 @@ class AgentController extends AbstractController
 
         // En second paramètre du render, je créé un tableau qui contient ma variable twig correspondant
         // à l'id de mon tableau agents
-        return $this->render('agentwildcard.html.twig', [
+        return $this->render('agents.html.twig', [
            'agents'=>$agents[$id]
         ]);
     }
@@ -78,7 +78,7 @@ class AgentController extends AbstractController
      * @Route("/agent", name="agent_list")
      */
 
-    // on créé une méthode agentShow qui sera appelée quand l'url "/agent/{id}"
+    // on créé une méthode agentList qui sera appelée quand l'url "/agent"
     // Elle est appelée automatiquement car la route est définie au dessus de la méthode
     public function agentList()
     {
