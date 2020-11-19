@@ -5,33 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ListAgent</title>
+    <title>Agent</title>
 </head>
 <body>
 
     <main>
+            {# Je créé un titre pour indiquer l'identité de l'agent #}
+            <h1>{{ agent.firstName }} {{ agent.lastName }}</h1>
 
-        {# Dans une boucle for je créé une variable temporaire qui va récupérer à chaque tour
-            de boucle les valeurs de mon tableau agents et l'afficher dans un li#}
-        {% for agent in agents %}
-
-            {# Dans ma boucle if, je vérifie si la valeur de published est vraie #}
-            {% if agent.published %}
-
-                {# J'affiche dans un paragraphe les informations des agents, puis je les place dans une balise <a>
-                afin que ces informations soient cliquable#}
-                {# Dans la balise de lien, avec la méthode path j'indique la route en suivre pour afficher
-                la page propre à un agent avec le nom de la route, puis dans un objet le paramètre id correspondant
-                l'id unique propre à l'agent#}
-                <p><strong><a href="{{ path('agent_show', {'id': agent.id}) }}">Firstname : </strong>{{ agent.firstName }}</a></p>
-                <p><strong><a href="{{ path('agent_show', {'id': agent.id}) }}">Lastname : </strong>{{ agent.lastName }}</a></p>
-                <p><strong><a href="{{ path('agent_show', {'id': agent.id}) }}">Age : </strong>{{ agent.age }}</a></p>
-                <hr>
-
-            {% endif %}
-
-        {% endfor %}
-
+            {# J'indique en paragraphe l'age de l'agent #}
+            <p>{{ agent.age }}</p>
     </main>
 
 </body>

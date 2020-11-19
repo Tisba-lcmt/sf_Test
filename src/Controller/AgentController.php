@@ -24,7 +24,7 @@ class AgentController extends AbstractController
     public function agentShow($id)
     {
         // Tableau multidimensionnel $agents
-        $agents = [
+        $agent = [
             1 => [
                 "id" => 1,
                 "lastName" => "Robert",
@@ -67,15 +67,15 @@ class AgentController extends AbstractController
 
         // En second paramètre du render, je créé un tableau qui contient ma variable twig correspondant
         // à l'id de mon tableau agents
-        return $this->render('agents.html.twig', [
-           'agents'=>$agents[$id]
+        return $this->render('agent.html.twig', [
+           'agent'=>$agent[$id]
         ]);
     }
 
     /**
      * Je créé la route agent qui sera la nouvelle url de notre site et qui prend en compte le principe
      *  de routing de Symfony avec son nom approprié
-     * @Route("/agent", name="agent_list")
+     * @Route("/agents", name="agent_list")
      */
 
     // on créé une méthode agentList qui sera appelée quand l'url "/agent"
@@ -125,7 +125,7 @@ class AgentController extends AbstractController
 
         // En second paramètre du render, je créé un tableau qui contient ma variable twig correspondant
         // à l'id de mon tableau agents
-        return $this->render('agent.html.twig', [
+        return $this->render('agents.html.twig', [
             'agents'=>$agents
         ]);
     }
