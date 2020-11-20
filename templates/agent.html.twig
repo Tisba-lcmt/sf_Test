@@ -5,9 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    {# Lien vers mon fichier style.css en partant du dossier assets à l'aide de la methode asset()
+    propre à twig et lié à Symfony#}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <title>Agent</title>
 </head>
-<body>
+<body class="agent">
 
     <main>
             {# Je créé un titre pour indiquer l'identité de l'agent #}
@@ -15,6 +19,7 @@
 
             {# J'indique en paragraphe l'age de l'agent #}
             <p>{{ agent.age }}</p>
+
     </main>
 
 </body>

@@ -11,9 +11,10 @@
 <body>
         {# J'effectue un if pour dire si active est vrai j'affiche mon html.twig #}
         {% if profile.active %}
-            {# Dans mes doubles accolades, j'indique mes variables twig firstname et name récupèrer
+
+            {# Dans mes doubles accolades, j'indique mes variables twig firstname et name pour récupèrer
             les variables PHP firstname et name définies dans mon fichier PHP Controller
-            qui récupèrent dans mon tableau le firstname et le name#}
+            qui récupèrent dans mon tableau le firstname et le name #}
             <h1>{{ profile.firstname}} {{ profile.name }}</h1>
 
             {# Dans mes accolades, j'indique ma variable twig age qui a pour valeur la variable définie
@@ -23,6 +24,7 @@
             {# Dans mes accolades, j'indique ma variable twig job qui a pour valeur la variable définie
              dans mon fichier PHP Controller qui récupère dans mon tableau le job #}
             <p>Le métier de cette personne est : {{ profile.job }}</p>
+
         {% endif %}
 </body>
 </html>

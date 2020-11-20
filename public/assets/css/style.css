@@ -1,0 +1,12 @@
+body.agent{
+    background-color: #C4FBF1;
+}
+
+body.agents h2 {
+    color: #282E67;
+}
+
+body.agents a {
+    text-decoration: none;
+    color: #54C2F0;
+}

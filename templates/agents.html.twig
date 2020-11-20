@@ -5,11 +5,16 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <title>ListAgent</title>
 </head>
-<body>
+<body class="agents">
 
     <main>
+
+        {# Un filtre pour compter le nombre d'agents dans notre liste #}
+        <h2>Il y a {{ agents | length }} agents dans cette liste </h2>
 
         {# Dans une boucle for je créé une variable temporaire qui va récupérer à chaque tour
             de boucle les valeurs de mon tableau agents et l'afficher dans un li#}
